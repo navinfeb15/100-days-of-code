@@ -22,6 +22,7 @@ while not bidding_finished:
   bid[name] = price
   # Ask if there are any other bidders
   should_continue = input("Are there any other bidders? Type 'yes' or 'no' \n")
+  
   # For clearing screen
   print('\033[2J\033[H')
 
