@@ -42,7 +42,6 @@ def check_over():
 
 # Start the game loop
 while not exit:
-    
     # Ask the user if they want to play a game of Blackjack
     play_again = input(
         "Do you want to play a game of Blackjack? Type 'y' or 'n':")
