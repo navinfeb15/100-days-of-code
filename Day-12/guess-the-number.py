@@ -10,8 +10,6 @@ print("Welcome to the Number Guessing Game!\nI'm thinking of a number between 1 
 # Generates a random number
 number = random.randint(1, 100)
 
-
-
 # Asks the user to choose a difficulty
 difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ")
 
@@ -34,7 +32,6 @@ def guess(num, chances):
         if chances == 0:
             print("You've run out of guesses, you lose.")
             return
-
 
 # Sets the difficulty level
 if difficulty.lower() == "hard":
