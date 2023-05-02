@@ -30,29 +30,13 @@ def add_cards(player_cards: list, count):
 
 def check_over():
     if sum(user_cards) > 21:
-        print(
-            f"  your final hand: {user_cards}, final score: {sum(user_cards)}")
-        print(
-            f"  computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
         print("You went over. You lose 😭\n")
     elif sum(computer_cards) > 21:
-        print(
-            f"  your final hand: {user_cards}, final score: {sum(user_cards)}")
-        print(
-            f"  computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
         print("Opponent went over. You win 😊\n")
 
     if sum(user_cards) == 21:
-        print(
-            f"  your final hand: {user_cards}, final score: {sum(user_cards)}")
-        print(
-            f"  computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
         print("You win 😊\n")
     elif sum(computer_cards) == 21:
-        print(
-            f"  your final hand: {user_cards}, final score: {sum(user_cards)}")
-        print(
-            f"  computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
         print("You lose 😭\n")
 
 
@@ -90,8 +74,15 @@ while not exit:
                     add_cards(computer_cards, 1)
                     # Check if the game is over
                     check_over()
+        print(
+            f"  your final hand: {user_cards}, final score: {sum(user_cards)}")
+        print(
+            f"  computer's final hand: {computer_cards}, final score: {sum(computer_cards)}")
+        
+        
     elif play_again == 'n':
         # Set the exit status to True to end the game loop
         exit = True
+        print('\033[2J\033[H')
     else:
         print("Please enter a valid value ....\n")
