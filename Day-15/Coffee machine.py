@@ -134,25 +134,15 @@ resources = {
 
 def check_resources(drink):
     ingredients = MENU[drink]["ingredients"]
-
+    
     # Check if there is enough water, coffee, and milk (if required) to make the drink
-    if ingredients.get("milk") is not None:
-        drink_milk = ingredients["milk"]
-    drink_water = ingredients["water"]
-    drink_coffee = ingredients["coffee"]
-
-    if drink_water > resources["water"]:
-        print("Sorry there is not enough water.")
-    elif drink_coffee > resources["coffee"]:
-        print("Sorry there is not enough coffee.")
-    elif ingredients.get("milk") is not None and drink_milk > resources["milk"]:
-        print("Sorry there is not enough milk.")
-    else:
-        return True
+    for ingredient in ingredients:
+        if ingredients[ingredient] > resources[ingredient]:
+            print(f"Sorry there is not enough {ingredient}.")
+            return False
+    return True
 
 # Define a function to process a drink request and update the resources accordingly
-
-
 def process_drink(drink):
     if check_resources(drink=drink):
         ingredients = MENU[drink]["ingredients"]
