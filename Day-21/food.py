@@ -1,7 +1,7 @@
 from turtle import Turtle  # Import the Turtle class
 import random  # Import the random module
 
-class Food(Turtle):
+class Food(Turtle): 
     def __init__(self):
         super().__init__()  # Call the parent class constructor
 
