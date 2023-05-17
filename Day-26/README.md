@@ -1,6 +1,5 @@
 #Day-26
 
-
 # NATO Phonetic  Alphabet Converter
 
 The  NATO Phonetic Alphabet  Converter is a  Python script  that converts a word entered by the user into its corresponding NATO phonetic code. The program reads a  CSV  file containing the NATO phonetic alphabet, creates a dictionary with the letter as the key and the corresponding code as the value, prompts the user to enter a word, and converts each letter of the word to its corresponding  NATO phonetic code  using the dictionary.
