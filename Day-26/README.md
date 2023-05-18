@@ -35,4 +35,4 @@ python nato_converter.py
 
 ## License
 
-This script is licensed under the  [MIT License](https://opensource.org/licenses/MIT).
+This script is licensed under the [MIT License](https://opensource.org/licenses/MIT).
