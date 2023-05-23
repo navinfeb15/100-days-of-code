@@ -1,6 +1,32 @@
 
 # Flight Deals  Finder
 
+
+## New Functionality
+
+A new functionality has been added to this script. The functionality is designed to get users'  email addresses, store them in the  Google Sheet, and then email them price changes in flight tickets. This feature can be useful for users who want to be notified of price changes in real-time and take advantage of the best deals.
+
+To use this feature, follow these steps:
+
+1.  Add a new column to the Google Sheet named "Email".
+    
+2.  Enter the email addresses of users who want to receive notifications in the "Email" column.
+    
+3.  Update the  `config.json`  file with your  Gmail address  and password.
+    
+4.  Run the script with the following command:
+    ```
+    python main.py --email
+    ```
+    
+
+The script will search for the cheapest flights to each city in the Google Sheet and compare the prices to the threshold value. If the price is below the threshold, the script will send an  email notification  to all email addresses listed in the "Email" column.
+
+Note: This feature requires authentication with your  Gmail  account. Please ensure that you have enabled "Less secure app access" in your  Gmail account  settings.
+
+---
+
+
 This script searches for the cheapest flights to cities in a  Google Sheet  and sends notifications when the price drops below a certain threshold.
 
 ## Getting Started
