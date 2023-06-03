@@ -28,7 +28,7 @@ if cur_day in birthdays_tuple:
 
     # Send the birthday email using Gmail SMTP
     my_email = "navinfeb15@gmail.com"
-    password = "jjvstrmusjmxjttv"
+    password = "your gmail application password"
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
         connection.login(user=my_email, password=password)
