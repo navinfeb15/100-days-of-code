@@ -1,6 +1,7 @@
 import datetime as dt
 import random
 import smtplib
+
 my_email = "your gmail application password"
 password = "jjvstrmusjmxjttv"
 now = dt.datetime.now()
