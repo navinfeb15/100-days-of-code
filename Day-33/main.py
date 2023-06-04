@@ -1,7 +1,8 @@
-import requests
 import datetime as dt
 import smtplib
 import time
+
+import requests
 
 # Coordinates of your location
 MY_LAT = 13.059309
