@@ -1,8 +1,7 @@
-import datetime as dt
+import smtplib
 import os
 import random
-import smtplib
-
+import datetime as dt
 import pandas as pd
 
 # Step 1: Update the birthdays.csv file
