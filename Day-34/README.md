@@ -1,30 +1,66 @@
-# Day-17
+# Day-34
 # README
 
-## Quiz Game
 
-This is a simple quiz game that asks the user True or False questions and keeps track of their score. The questions are stored in a separate data file and loaded into the game using the QuizBrain class.
 
-## Installation
 
-To use this game, you will need to have Python 3 installed on your computer. You can download Python from the official website: https://www.python.org/downloads/
+# Quizzler
 
-You will also need to download the following files from this repository:
-
-- `main.py`
-- `question_model.py`
-- `quiz_brain.py`
-- `data.py`
+Quizzler is a simple quiz game implemented using Python and Tkinter. It presents a series of True/False questions to the user and allows them to answer by clicking the corresponding buttons.
 
 ## Usage
 
-To run the quiz game, simply open a terminal or command prompt and navigate to the directory containing the game files. Then, run the following command:
+1. Import the required modules:
+```
+from question_model import Question
+from data import question_data
+from quiz_brain import QuizBrain
+from ui import QuizInterface
+```
+
+2. Prepare the question bank by creating a list of `Question` objects:
+```python
+question_bank = []
+for ques in question_data:
+    question_obj = Question(ques["text"], ques["answer"])
+    question_bank.append(question_obj)
+```
+
+3. Create a `QuizBrain` object by passing the question bank:
+```python
+quiz = QuizBrain(question_bank)
+```
+
+4. Create a `QuizInterface` object, passing the `QuizBrain` object:
+```python
+quiz_ui = QuizInterface(quiz)
+```
+
+5. Run the Tkinter event loop to start the quiz interface:
+```python
+quiz_ui.window.mainloop()
+```
+
+## Files
+
+- `question_model.py`: Contains the `Question` class that represents a single quiz question.
+- `data.py`: Provides the question data used to populate the question bank.
+- `quiz_brain.py`: Implements the `QuizBrain` class that handles the logic for the quiz.
+- `ui.py`: Implements the `QuizInterface` class that provides the graphical user interface for the quiz.
+
+## Dependencies
+
+- Python 3.x
+- Tkinter (usually included with Python)
+
+
+## Acknowledgments
+
+The code for Quizzler is inspired by the "100 Days of Code - The Complete Python Pro Bootcamp for 2021" course on Udemy.
 
 ```
-python main.py
-```
 
-The game will start and ask you True or False questions one by one. Enter your answer as "True" or "False" and hit Enter. The game will let you know if your answer was correct and keep track of your score.
+Please note that the README file assumes the existence of additional files (`question_model.py`, `data.py`, `quiz_brain.py`, `ui.py`, and `screenshots/quizzler.png`) and their respective implementations. Make sure to provide the complete code and replace the placeholder filenames with the actual filenames used in your project. Additionally, you can include any necessary installation instructions or additional acknowledgments as needed.
 
 ## License
 
