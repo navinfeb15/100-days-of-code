@@ -1,6 +1,7 @@
 import requests
 import datetime
 
+
 # Define the API endpoint and authentication credentials
 url_endpoint = "https://pixe.la/v1/users"
 TOKEN = "28wyeq982133rUIRJF2rf"
