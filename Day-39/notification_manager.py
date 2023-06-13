@@ -8,7 +8,7 @@ class NotificationManager:
         self.deals = deals
         self.records = records
         self.account_sid = "AC70c2d9568e8697cc25467fb084e74034"
-        self.auth_token = "<YOUR API KEY>"
+        self.auth_token = "c4cbd5289497cec10430cd67f7ce799f"
 
     def send_alert(self):
         """Sends an SMS notification with the best flight deals."""

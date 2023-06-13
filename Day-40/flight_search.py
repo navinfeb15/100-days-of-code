@@ -14,7 +14,19 @@ class FlightSearch:
             "fly_to": to,
             "date_from": "18/07/2023",
             "date_to": "18/12/2023",
-            "curr": "INR"
+            "curr": "INR",
+            "max_stopovers": 0
+        }
+        response = requests.get(url=self.url, params=parameters, headers=self.headers).json()
+        return response
+    def get_flight_data_ws(self, to):
+        parameters = {
+            "fly_from": "MAA",
+            "fly_to": to,
+            "date_from": "18/07/2023",
+            "date_to": "18/12/2023",
+            "curr": "INR",
+            "max_stopovers": 1
         }
         response = requests.get(url=self.url, params=parameters, headers=self.headers).json()
         return response
@@ -26,5 +38,3 @@ class FlightSearch:
         }
         city_resp = requests.get(url=loc_endpoint, params=city_params, headers=self.headers).json()
         return city_resp["locations"][0]['code']
-        # print(resp["locations"]["code"])
-        # resp["locations"][0]['code']
