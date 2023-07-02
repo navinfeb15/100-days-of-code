@@ -1,0 +1,1 @@
+GOOGLE_FORM_LINK = "https://forms.gle/Rk5uhoZStSYMWtbi6"
