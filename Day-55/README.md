@@ -9,7 +9,7 @@ This is a simple number guessing game built with Flask, where the user tries to 
 
 ```
 
-git clone https://github.com/your-username/number-guessing-game.git
+git clone https://github.com/navinfeb15/100-days-of-code.git
 
 ```
 
