@@ -90,8 +90,6 @@ def search_cafe():
 
 @app.route("/add", methods=['POST','GET'])
 def add():
-    # if request.method == 'POST':
-    print(request.args.get("name"))
     adding_cafe = Cafe(
         name=request.args.get("name"),
         map_url=request.args.get("map_url"),
@@ -135,7 +133,6 @@ def delete(cafe_id):
     if api_key == "TopSecretAPIKey":
         
         cafe = db.get_or_404(Cafe, cafe_id)
-        print(cafe)  
         if cafe:
             db.session.delete(cafe)
             db.session.commit()
