@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <form action="{{ url_for('change_rating',book_id=book.id) }}" method="post">
-    <h1>Add to Library</h1>
-    <h3>Book Name: {{ book.title }}</h3>
-    <h3>Current Rating: {{ book.rating }}</h3>
-    <input type="text" name="new_rating" id="new_rating" placeholder="New Rating"/>
-    <button type="submit" id="change_book_rating">Change Rating</button>
-</form>
-</body>
+      <h1>Add to Library</h1>
+      <h3>Book Name: {{ book.title }}</h3>
+      <h3>Current Rating: {{ book.rating }}</h3>
+      <input
+        type="text"
+        name="new_rating"
+        id="new_rating"
+        placeholder="New Rating"
+      />
+      <button type="submit" id="change_book_rating">Change Rating</button>
+    </form>
+  </body>
 </html>

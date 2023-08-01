@@ -7,12 +7,17 @@
   <body>
     <h1>My Library</h1>
     <ul>
-      {% if books %}
-        {% for each_book in books %}
-          <li>{{ each_book['title'] }} - {{ each_book.author }} - {{ each_book.rating }}     <a href="{{ url_for('change_rating',book_id=each_book.id) }}">Edit Rating</a>     <a href="{{ url_for('delete_book',book_id=each_book.id) }}">Delete Book</a></li>
-        {% endfor%}
-      {% else %}
-        <p>Library is empty.</p>
+      {% if books %} {% for each_book in books %}
+      <li>
+        {{ each_book['title'] }} - {{ each_book.author }} - {{ each_book.rating
+        }}
+        <a href="{{ url_for('change_rating',book_id=each_book.id) }}"
+          >Edit Rating</a>
+        <a href="{{ url_for('delete_book',book_id=each_book.id) }}"
+          >Delete Book</a>
+      </li>
+      {% endfor%} {% else %}
+      <p>Library is empty.</p>
       {% endif %}
     </ul>
 
