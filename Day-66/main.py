@@ -16,7 +16,7 @@ db.init_app(app)
 ##Cafe TABLE Configuration
 class Cafe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), unique=True, nullable=False)
+    name = db.Column(db.String(250), unique=True, nullable=True)
     map_url = db.Column(db.String(500), nullable=False)
     img_url = db.Column(db.String(500), nullable=False)
     location = db.Column(db.String(250), nullable=False)
@@ -88,10 +88,69 @@ def search_cafe():
 
 ## HTTP POST - Create Record
 
+@app.route("/add", methods=['POST','GET'])
+def add():
+    # if request.method == 'POST':
+    print(request.args.get("name"))
+    adding_cafe = Cafe(
+        name=request.args.get("name"),
+        map_url=request.args.get("map_url"),
+        img_url=request.args.get("img_url"),
+        location=request.args.get("loc"),
+        has_sockets=request.args.get("sockets") == 'true',
+        has_toilet=request.args.get("toilet") == 'true',
+        has_wifi=request.args.get("wifi") == 'true',
+        can_take_calls=request.args.get("calls") == 'true',
+        seats=request.args.get("seats"),
+        coffee_price=request.args.get("coffee_price"))
+    
+    db.session.add(adding_cafe)
+    db.session.commit()
+    return jsonify(response={"success": "Successfully added the new cafe."})
+    # else:
+    #     return jsonify(response={"Failed": "error."})
+
 ## HTTP PUT/PATCH - Update Record
+
+@app.route("/update-price/<int:cafe_id>", methods = ['PATCH'])
+def update_price(cafe_id):
+    cafe = db.get_or_404(Cafe, cafe_id)
+    print(cafe)  
+    if cafe:
+        cafe.coffee_price = request.args.get("new_price")
+        db.session.commit()
+        return jsonify(response={"success": "Successfully updated the cafe."}), 200
+    else:
+        return {
+            "error" : {
+                "Not Found" : "Cafe not found."
+            }
+        }, 200
 
 ## HTTP DELETE - Delete Record
 
-
+@app.route("/report-closed/<int:cafe_id>", methods = ['DELETE'])
+def delete(cafe_id):
+    api_key = request.args.get("api-key")
+    if api_key == "TopSecretAPIKey":
+        
+        cafe = db.get_or_404(Cafe, cafe_id)
+        print(cafe)  
+        if cafe:
+            db.session.delete(cafe)
+            db.session.commit()
+            return jsonify(response={"success": "Successfully deleted the cafe."}), 200
+        else:
+            return {
+                "error" : {
+                    "Not Found" : "Sorry, a cafe with that id was not found in the database."
+                }
+            }, 200
+    else:
+        return jsonify(error={"Forbidden": "Sorry, that's not allowed. Make sure you have the correct api_key."}), 403
+    
+    
 if __name__ == '__main__':
     app.run(debug=True)
+
+
