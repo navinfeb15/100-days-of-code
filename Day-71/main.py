@@ -1,3 +1,4 @@
+import os
 import hashlib
 from datetime import date
 from functools import wraps
@@ -12,11 +13,9 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user,login_required
 
-import os
-os.chdir("/workspaces/100-days-of-code/Day-69")
-
+print(os.environ.get("SECRET_KEY"))
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get("FLASK_KEY")
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -25,7 +24,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Connect to DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("URI", "sqlite:///posts.db")
 db = SQLAlchemy()
 db.init_app(app)
 
@@ -181,7 +180,7 @@ def show_post(post_id):
                 flash('You need to log in or register to comment.')
                 return redirect(url_for('login'))
     
-    return render_template('post.html', post=requested_post, form=form, comments=comments, current_user=current_user)
+    return render_template('post.html', post=requested_post, form=form, comments=comments, current_user=current_user, get_img = get_gravatar_img)
 
 @app.route('/about')
 def about():
