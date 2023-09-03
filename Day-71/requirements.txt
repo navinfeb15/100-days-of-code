@@ -3,7 +3,7 @@ Flask_CKEditor==0.4.6
 Flask_Login==0.6.2
 flask_sqlalchemy==3.0.5
 Flask_WTF==1.1.1
-Werkzeug==2.3.6
+Werkzeug
 WTForms==3.0.1
 blinker==1.6.2
 click==8.1.7
