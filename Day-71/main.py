@@ -1,6 +1,7 @@
 import os
 import hashlib
 from datetime import date
+from typing import Optional
 from functools import wraps
 from flask_wtf import FlaskForm
 from flask_bootstrap import Bootstrap5
