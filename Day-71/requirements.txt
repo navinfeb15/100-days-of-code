@@ -19,3 +19,4 @@ Jinja2
 MarkupSafe
 SQLAlchemy
 typing_extensions
+psycopg2
