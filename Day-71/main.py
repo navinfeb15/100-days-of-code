@@ -75,7 +75,7 @@ with app.app_context():
     db.create_all()
 
 @login_manager.user_loader
-def load_user(user_id: str) -> User | None:
+def load_user(user_id: str) -> Optional[User]:
     return User.query.get(int(user_id))
 
 def restrict_route(func):
