@@ -211,7 +211,7 @@ def add_new_post():
             db.session.commit()
             return redirect(url_for('get_all_posts'))
     
-    return render_template('new_post.html', form=form)
+    return render_template('make-post.html', form=form)
 
 @app.route('/edit-post/<int:post_id>', methods=['GET', 'POST'])
 @login_required
