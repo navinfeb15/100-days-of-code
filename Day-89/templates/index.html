@@ -1,0 +1,97 @@
+{% extends 'base.html' %} {% block title %}To-DO List{% endblock %} {% block content %} <section
+  class="vh-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="card mask-custom">
+          <div class="card-body p-4 text-white">
+            <div class="text-center pt-3 pb-2"> <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp" alt="Check"
+                width="60" />
+              <h2 class="my-4">Task List</h2>
+            </div>
+
+            <form method="POST">
+              {{ task_form.csrf_token }}
+              <table class="table text-white mb-0">
+                <thead>
+                  <tr>
+                    <th class="task-row" scope="col">Task</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="fw-normal">
+                    <th>
+                      {{ task_form.task (class="form-control") }}
+                    </th>
+                    <td class="align-middle">
+                      <h6 class="mb-0">
+                        <div class="dropdown show">
+                          {{ task_form.priority (class="btn btn-secondary dropdown-toggle") }}
+                        </div>
+                      </h6>
+                    </td>
+                    <td class="align-middle">
+                      <span>
+                        {{ task_form.date (class="input-group date" ,id="datepicker")}}
+                      </span>
+                    </td>
+                    <td class="align-middle">
+                      <span class="edit-delete-icon">
+                        <a href="#!" data-mdb-toggle="tooltip" title="Done">✏️</a>
+                        <a href="#!" data-mdb-toggle="tooltip" type="reset" value="Reset">🗑️</a>
+                      </span>
+                    </td>
+                    <td>
+                      {{ task_form.submit (class="btn btn-success") }}
+                    </td>
+                  </tr>
+
+                  {% for task in task_list %}
+                  {%if task %}
+                  <tr class="fw-normal">
+                    <th class="align-middle">
+                      {{ task.task }}
+                    </th>
+                    <td class="align-middle">
+                      <h6 class="mb-0">
+                        <div class="dropdown show">
+                          {{ task.priority }}
+                        </div>
+                      </h6>
+                    </td>
+                    <td class="align-middle">
+                      <span>
+                        {{ task.date }}
+                      </span>
+                    </td>
+                    <td class="align-middle">
+                      <span class="edit-delete-icon">
+                        <a href="#!" data-mdb-toggle="tooltip" title="Done">✏️</a>
+                        <a href="{{url_for('del_task', task_id=task.id)}}" data-mdb-toggle="tooltip"
+                          title="Remove">🗑️</a>
+                      </span>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-warning"
+                        onclick=window.location.href="{{url_for('complete_task', task_id=task.id)}}">Mark as
+                        Done</button>
+                    </td>
+                  </tr>
+                  {%endif%}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
